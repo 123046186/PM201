@@ -1,50 +1,82 @@
 const readline = require("readline");
 
+const { menuClientes } = require("./clientes");
+const { menuCocina } = require("./cocina");
+const { mostrarCaja } = require("./caja");
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-function menu() {
+// DATOS COMPARTIDOS
+let pedidos = [];
 
-    console.log("\n--- MENU PRINCIPAL ---");
-    console.log("1. Caja");
-    console.log("2. Clientes");
-    console.log("3. Cocina");
-    console.log("4. Salir");
+let inventario = [];
 
-    rl.question("Elige una opcion: ", function(opcion) {
+const productos = [
+    { id: 1, nombre: "Hamburguesa", precio: 120 },
+    { id: 2, nombre: "Pizza", precio: 250 },
+    { id: 3, nombre: "Refresco", precio: 35 }
+];
 
-        if(opcion == "1") {
+// MENU PRINCIPAL
+function menuPrincipal() {
 
-            require("./caja.js");
+    console.log("\n=== MENU PRINCIPAL ===");
+    console.log("1 = Clientes");
+    console.log("2 = Cocina");
+    console.log("3 = Caja");
+    console.log("4 = Salir");
 
-        } 
-        else if(opcion == "2") {
+    rl.question("Seleccione una opcion: ", function(opcion) {
 
-            require("./clientes.js");
+        switch(Number(opcion)) {
 
-        } 
-        else if(opcion == "3") {
+            case 1:
 
-            require("./cocina.js");
+                menuClientes(
+                    rl,
+                    productos,
+                    pedidos,
+                    menuPrincipal
+                );
 
-        } 
-        else if(opcion == "4") {
+                break;
 
-            console.log("Adios");
-            rl.close();
+            case 2:
 
-        } 
-        else {
+                menuCocina(
+                    rl,
+                    inventario,
+                    menuPrincipal
+                );
 
-            console.log("Opcion no valida");
-            menu();
+                break;
 
+            case 3:
+
+                mostrarCaja(pedidos);
+
+                menuPrincipal();
+
+                break;
+
+            case 4:
+
+                console.log("Programa terminado");
+
+                rl.close();
+
+                break;
+
+            default:
+
+                console.log("Opcion no valida");
+
+                menuPrincipal();
         }
-
     });
-
 }
 
-menu();
+menuPrincipal();

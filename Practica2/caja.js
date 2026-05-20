@@ -1,36 +1,23 @@
-console.log("Sistema de Pedidos");
+console.log("Sistema de Caja");
 
-//es el array lista para guardar los pedidos
-let pedidos = [];
+// funcion para mostrar pedidos
+function mostrarCaja(pedidos) {
 
-// se inicia el total acumulado con un let en 0 or que va a cambiar cuando hagamos pedidos
-let totalAcumulado = 0;
+    let totalAcumulado = 0;
 
-// agregarPedido donde creo la constante 
-function agregarPedido(producto, precio) {
+    console.log("\nLista de pedidos:");
 
-    // objeto pedido para crearlo
-    const pedido = {
-        producto: producto,
-        precio: precio
-    };
+    console.table(pedidos);
 
-    //se guarda en el array pedido
-    pedidos.push(pedido);
+    for (let i = 0; i < pedidos.length; i++) {
 
-    totalAcumulado += precio;
+        totalAcumulado += pedidos[i].total;
 
-    console.log("Pedido agregado: " + producto);
+    }
+
+    console.log("Total acumulado: $" + totalAcumulado);
 }
 
-// Agregar pedidos
-agregarPedido("Hamburguesa", 120);
-agregarPedido("Pizza", 250);
-agregarPedido("Refresco", 35);
-
-// tabla de pedidos
-console.log("Lista de pedidos:");
-console.table(pedidos);
-
-// total acumulado
-console.log("Total acumulado: $" + totalAcumulado);
+module.exports = {
+    mostrarCaja
+};
