@@ -3,19 +3,26 @@ console.log("Sistema de Caja");
 // funcion para mostrar pedidos
 function mostrarCaja(pedidos) {
 
-    let totalAcumulado = 0;
-
-    console.log("\nLista de pedidos:");
+    console.log("\n=== CAJA ===");
 
     console.table(pedidos);
 
-    for (let i = 0; i < pedidos.length; i++) {
+    // reduce()
+    let subtotalGeneral = pedidos.reduce(function(acumulador, pedido) {
+        return acumulador + pedido.subtotal;
+    }, 0);
 
-        totalAcumulado += pedidos[i].total;
+    let ivaGeneral = pedidos.reduce(function(acumulador, pedido) {
+        return acumulador + pedido.iva;
+    }, 0);
 
-    }
+    let totalGeneral = pedidos.reduce(function(acumulador, pedido) {
+        return acumulador + pedido.total;
+    }, 0);
 
-    console.log("Total acumulado: $" + totalAcumulado);
+    console.log("Subtotal: $" + subtotalGeneral);
+    console.log("IVA: $" + ivaGeneral);
+    console.log("Total: $" + totalGeneral);
 }
 
 module.exports = {

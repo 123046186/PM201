@@ -9,18 +9,57 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// datos de las listas anteriores
 let pedidos = [];
 
 let inventario = [];
 
+// productos
 const productos = [
-    { id: 1, nombre: "Hamburguesa", precio: 120 },
-    { id: 2, nombre: "Pizza", precio: 250 },
-    { id: 3, nombre: "Refresco", precio: 35 }
+    {
+        id: 1,
+        nombre: "Hamburguesa",
+        precio: 120,
+        categoria: "Comida"
+    },
+    {
+        id: 2,
+        nombre: "Pizza",
+        precio: 250,
+        categoria: "Comida"
+    },
+    {
+        id: 3,
+        nombre: "Refresco",
+        precio: 35,
+        categoria: "Bebida"
+    },
+    {
+        id: 4,
+        nombre: "Pastel",
+        precio: 80,
+        categoria: "Postre"
+    }
 ];
 
-// menu
+// promociones estaticas
+const promociones = [
+    {
+        id: 1,
+        nombre: "2x1 en tacos",
+        precio: 20
+    },
+    {
+        id: 2,
+        nombre: "Pizza con Coca Cola",
+        precio: 56
+    },
+    {
+        id: 3,
+        nombre: "Hamburguesa + papas",
+        precio: 90
+    }
+];
+
 function menuPrincipal() {
 
     console.log("\n=== MENU PRINCIPAL ===");
@@ -38,6 +77,7 @@ function menuPrincipal() {
                 menuClientes(
                     rl,
                     productos,
+                    promociones,
                     pedidos,
                     menuPrincipal
                 );
@@ -49,6 +89,7 @@ function menuPrincipal() {
                 menuCocina(
                     rl,
                     inventario,
+                    promociones,
                     menuPrincipal
                 );
 

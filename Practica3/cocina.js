@@ -1,11 +1,18 @@
-function menuCocina(rl, inventario, regresarMenu) {
+function menuCocina(
+    rl,
+    inventario,
+    promociones,
+    regresarMenu
+) {
 
-    console.log("\n |-Menu Cocina-|");
-    console.log("1.-Agregar");
-    console.log("2.-Listar");
-    console.log("3.-Editar");
-    console.log("4.-Borrar");
-    console.log("5.-Regresar");
+    console.log("\n=== MENU COCINA ===");
+    console.log("1.- Agregar producto");
+    console.log("2.- Listar inventario");
+    console.log("3.- Editar producto");
+    console.log("4.- Borrar producto");
+    console.log("5.- Buscar postres");
+    console.log("6.- Ver promociones");
+    console.log("7.- Regresar");
 
     rl.question("Que opcion quieres? ", function(opcion) {
 
@@ -15,17 +22,26 @@ function menuCocina(rl, inventario, regresarMenu) {
 
                 rl.question("Cantidad: ", function(cantidadItem) {
 
-                    var nuevoProducto = {
-                        id: inventario.length + 1,
-                        nombre: nombreItem,
-                        cantidad: parseInt(cantidadItem)
-                    };
+                    rl.question("Categoria: ", function(categoriaItem) {
 
-                    inventario.push(nuevoProducto);
+                        var nuevoProducto = {
+                            id: inventario.length + 1,
+                            nombre: nombreItem,
+                            cantidad: parseInt(cantidadItem),
+                            categoria: categoriaItem
+                        };
 
-                    console.log("Producto guardado");
+                        inventario.push(nuevoProducto);
 
-                    menuCocina(rl, inventario, regresarMenu);
+                        console.log("Producto guardado");
+
+                        menuCocina(
+                            rl,
+                            inventario,
+                            promociones,
+                            regresarMenu
+                        );
+                    });
                 });
             });
         }
@@ -34,7 +50,12 @@ function menuCocina(rl, inventario, regresarMenu) {
 
             console.table(inventario);
 
-            menuCocina(rl, inventario, regresarMenu);
+            menuCocina(
+                rl,
+                inventario,
+                promociones,
+                regresarMenu
+            );
         }
 
         else if (opcion == "3") {
@@ -54,7 +75,12 @@ function menuCocina(rl, inventario, regresarMenu) {
 
                     console.log("Ya se edito");
 
-                    menuCocina(rl, inventario, regresarMenu);
+                    menuCocina(
+                        rl,
+                        inventario,
+                        promociones,
+                        regresarMenu
+                    );
                 });
             });
         }
@@ -63,32 +89,58 @@ function menuCocina(rl, inventario, regresarMenu) {
 
             rl.question("Pon el id que vas a borrar: ", function(idBorrar) {
 
-                var nuevoInventario = [];
-
-                for (var i = 0; i < inventario.length; i++) {
-
-                    if (inventario[i].id != idBorrar) {
-
-                        nuevoInventario.push(inventario[i]);
-
-                    }
-                }
+                let nuevoInventario = inventario.filter(
+                    item => item.id != idBorrar
+                );
 
                 inventario.length = 0;
 
-                for (var i = 0; i < nuevoInventario.length; i++) {
+                nuevoInventario.forEach(function(item) {
 
-                    inventario.push(nuevoInventario[i]);
+                    inventario.push(item);
 
-                }
+                });
 
                 console.log("Ya se borro");
 
-                menuCocina(rl, inventario, regresarMenu);
+                menuCocina(
+                    rl,
+                    inventario,
+                    promociones,
+                    regresarMenu
+                );
             });
         }
 
         else if (opcion == "5") {
+
+            let postres = inventario.filter(
+                item => item.categoria === "Postre"
+            );
+
+            console.table(postres);
+
+            menuCocina(
+                rl,
+                inventario,
+                promociones,
+                regresarMenu
+            );
+        }
+
+        else if (opcion == "6") {
+
+            console.table(promociones);
+
+            menuCocina(
+                rl,
+                inventario,
+                promociones,
+                regresarMenu
+            );
+        }
+
+        else if (opcion == "7") {
 
             regresarMenu();
         }
@@ -97,7 +149,12 @@ function menuCocina(rl, inventario, regresarMenu) {
 
             console.log("Esa opcion no existe");
 
-            menuCocina(rl, inventario, regresarMenu);
+            menuCocina(
+                rl,
+                inventario,
+                promociones,
+                regresarMenu
+            );
         }
     });
 }
