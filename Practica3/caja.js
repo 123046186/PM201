@@ -23,6 +23,7 @@ function mostrarCaja(pedidos) {
     console.log("Subtotal: $" + subtotalGeneral);
     console.log("IVA: $" + ivaGeneral);
     console.log("Total: $" + totalGeneral);
+    callback("listo");
 }
 
 module.exports = {
