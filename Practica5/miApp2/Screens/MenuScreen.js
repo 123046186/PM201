@@ -1,13 +1,17 @@
 
 /* Zona1: Importaciones de archivos y componentes */
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+/* Zona1: Importaciones de archivos y componentes */
+
 import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
+
 import TarjetasScreen from './TarjetasScreen';
 import Componente1 from './Componente1';
-import FlatList from './Practica4/FlatListScreen';
+import FlatListScreen from './Practica4/FlatListScreen';
 import SectionListScreen from './Practica4/SectionListScreen';
 import Practica9 from './practica9';
+import PressableScreen from './pressableScreen';
+import SwitchScreen from './SwitchScreen';
 
 /* Zona 2: Main - componentes */
 export default function App() {
@@ -18,11 +22,15 @@ export default function App() {
         case 'Componente 1':
             return <Componente1/>
         case 'flatlist':
-            return <FlatListScreen/>
+            return <FlatListScreen />;
         case 'SectionList':
             return <SectionListScreen/>
         case 'practica9':
             return <Practica9 />;
+        case 'pressableScreen':
+            return <PressableScreen />;
+        case 'Switch':
+            return <SwitchScreen />;
         case 'menu':
             default:
         return (
@@ -33,6 +41,8 @@ export default function App() {
                 <Button title= "Practica FlatList" onPress={()=>setScreen('flatlist')}/>
                 <Button title= "Practica SectionList" onPress={()=>setScreen('SectionList')}/>
                 <Button title="Practica 9" onPress={() => setScreen('practica9')}/>
+                <Button title="Practica Pressable" onPress={()=>setScreen('pressableScreen')}/>
+                <Button title="Practica Switch" onPress={()=>setScreen('Switch')}/>
             </View>
         );//return
     }//switch
