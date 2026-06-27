@@ -1,102 +1,120 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export const Components4_0 = () => {
-    const[texto, setTexto] = useState('');
-    const[numero, setNumero] = useState('');
-    const[correo, setCorreo] = useState('');
-    const[password, setPassword] = useState('');
+
+    const [texto, setTexto] = useState('');
+    const [numero, setNumero] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [password, setPassword] = useState('');
 
     return(
-        <view style = {styles.container}>
-            <text style={styles.title}>
+        <View style={styles.container}>
 
-                Hola RN: Componente Textinput
+            <Text style={styles.title}>
+                Hola RN: Componente TextInput
+            </Text>
 
-            </text>
-            <text style={styles.subtitule}>
-
-                Ejemplo de varios textinput con state
-
-            </text>
+            <Text style={styles.subtitle}>
+                Ejemplo de varios TextInput con state
+            </Text>
 
             <TextInput
                 placeholder="Escribe algo..."
-                value ={texto}
-                onChangeText = {setTexto}
+                value={texto}
+                onChangeText={setTexto}
                 maxLength={20}
-                autoCapitalize='words'
+                autoCapitalize="words"
                 style={styles.input}
             />
 
             <TextInput
                 placeholder="Ingresa un número..."
-                value ={numero}
-                onChangeText = {(text)=> setNumero(text.replace(/[^0-9^]/g,''))}
-                keyboardType='numeric'
+                value={numero}
+                onChangeText={(text)=>setNumero(text.replace(/[^0-9]/g,''))}
+                keyboardType="numeric"
                 maxLength={10}
                 style={styles.input}
             />
 
             <TextInput
                 placeholder="Ingresa tu correo..."
-                value ={correo}
-                onChangeText = {setCorreo}
-                keyboardType='email-address'
-                autoCapitalize='none'
+                value={correo}
+                onChangeText={setCorreo}
+                keyboardType="email-address"
+                autoCapitalize="none"
                 autoCorrect={false}
-                textContentType='emailAddress'
+                textContentType="emailAddress"
                 style={styles.input}
-            />            
+            />
+
             <TextInput
                 placeholder="Ingresa tu password..."
-                value ={password}
-                onChangeText = {setPassword}
+                value={password}
+                onChangeText={setPassword}
                 secureTextEntry={true}
                 style={styles.input}
-            />   
-            <Text style ={styles.subtitule}> Valores almacenados</Text>   
-            <Text style ={styles.subtitule}> Texto: {texto}</Text>
-            <Text style ={styles.subtitule}> Numero: {numero}</Text>
-            <Text style ={styles.subtitule}> Correo: {correo}</Text>
-            <Text style ={styles.subtitule}> Contraeña: {password}</Text>
+            />
 
+            <Text style={styles.subtitle}>
+                Valores almacenados
+            </Text>
 
+            <Text style={styles.result}>
+                Texto: {texto}
+            </Text>
 
-        </view>
+            <Text style={styles.result}>
+                Numero: {numero}
+            </Text>
+
+            <Text style={styles.result}>
+                Correo: {correo}
+            </Text>
+
+            <Text style={styles.result}>
+                Contraseña: {password}
+            </Text>
+
+        </View>
     );
 };
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fefefe',
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#4A90E2',
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#555',
-    marginTop: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 12,
-    padding: 12,
-    marginTop: 10,
-    backgroundColor: '#f9f9f9',
-    fontSize: 15,
-  },
-  result: {
-    fontSize: 15,
-    color: '#333',
-    marginTop: 5,
-  },
+    container:{
+        flex:1,
+        padding:20,
+        backgroundColor:'#fefefe',
+    },
+
+    title:{
+        fontSize:22,
+        fontWeight:'bold',
+        color:'#4A90E2',
+        textAlign:'center',
+        marginBottom:15,
+    },
+
+    subtitle:{
+        fontSize:16,
+        color:'#555',
+        marginTop:10,
+    },
+
+    input:{
+        borderWidth:1,
+        borderColor:'#ccc',
+        borderRadius:12,
+        padding:12,
+        marginTop:10,
+        backgroundColor:'#f9f9f9',
+        fontSize:15,
+    },
+
+    result:{
+        fontSize:15,
+        color:'#333',
+        marginTop:5,
+    }
 });
