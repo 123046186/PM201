@@ -12,6 +12,8 @@ import SectionListScreen from './Practica4/SectionListScreen';
 import Practica9 from './practica9';
 import PressableScreen from './pressableScreen';
 import SwitchScreen from './SwitchScreen';
+import { Components4_0 } from './Componente4_0';
+import ComponenteAlert from './ComponenteAlerta';
 
 /* Zona 2: Main - componentes */
 export default function App() {
@@ -31,6 +33,10 @@ export default function App() {
             return <PressableScreen />;
         case 'Switch':
             return <SwitchScreen />;
+        case 'Componente4_0':
+            return <Components4_0 />;
+        case 'ComponenteAlerta':
+            return <ComponenteAlert />;            
         case 'menu':
             default:
         return (
@@ -43,6 +49,8 @@ export default function App() {
                 <Button title="Practica 9" onPress={() => setScreen('practica9')}/>
                 <Button title="Practica Pressable" onPress={()=>setScreen('pressableScreen')}/>
                 <Button title="Practica Switch" onPress={()=>setScreen('Switch')}/>
+                <Button title="Practica TextInput" onPress={()=>setScreen('Componente4_0')}/>
+                <Button title="Practica ComponenteAlerta" onPress={()=>setScreen('ComponenteAlerta')}/>
             </View>
         );//return
     }//switch
