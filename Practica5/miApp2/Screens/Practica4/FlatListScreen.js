@@ -1,56 +1,63 @@
 import React from 'react';
+import { View, Text, StyleSheet, SectionList } from 'react-native';
 
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
-
-export default function FlatListenScreen(){
-    const estudiantes = [{
-        id:'1',
-        nombre: 'Erick',
-        carrera: 'ISC'
+export default function SectionListScreen() {
+  const datos = [
+    {
+      title: 'Ingeniería en Sistemas',
+      data: [
+        { nombre: 'Erick' },
+        { nombre: 'Javi' }
+      ]
     },
     {
-        id:'2',
-        nombre: 'Toño',
-        carrera: 'ISC' 
-    },
-    {
-        id:'3',
-        nombre: 'Javier',
-        carrera: 'ISC' 
+      title: 'Tecnologías de Información',
+      data: [
+        { nombre: 'Ana' },
+        { nombre: 'Pedro' }
+      ]
     }
-    ];
-    return(
-        <View style={StyleSheet.container}>
-            <Text style={StyleSheet.container}> Lista de estudiantes </Text>
-            <FlatList 
-            data = {estudiantes} 
-            renderItem={({item})=>(
-                <View style={StyleSheet.card}>
-                    <Text>Nombre:{item.nombre}</Text>
-                    <Text>Carrerae:{item.carrera}</Text>
-                </View>
-            )}
-        />
-        </View>
-    )
+  ];
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>
+        Estudiantes por carrera
+      </Text>
+
+      <SectionList
+        sections={datos}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.header}>
+            {section.title}
+          </Text>
+        )}
+        renderItem={({ item }) => (
+          <Text style={styles.item}>
+            {item.nombre}
+          </Text>
+        )}
+      />
+    </View>
+  );
 }
 
-const styles=StyleSheet.create({
-    Container: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
-    padding:20,
-    },
-
-    titulo:{
-    fontSize:25,
-    fontWeight:'bold'
-    },
-
-    card:{
-    backgroundColor:'#d4f1f4',
-    padding: 15,
-    margin:10,
-    borderRadius:10
-    }
-
-  });
+    padding: 20
+  },
+  titulo: {
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  header: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: '#90caf9',
+    padding: 10
+  },
+  item: {
+    padding: 15
+  }
+});
