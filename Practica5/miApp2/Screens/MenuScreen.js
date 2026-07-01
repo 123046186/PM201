@@ -1,6 +1,4 @@
-
-/* Zona1: Importaciones de archivos y componentes */
-/* Zona1: Importaciones de archivos y componentes */
+//* Zona1: Importaciones de archivos y componentes */
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
@@ -14,7 +12,8 @@ import PressableScreen from './pressableScreen';
 import SwitchScreen from './SwitchScreen';
 import { Components4_0 } from './Componente4_0';
 import ComponenteAlert from './ComponenteAlerta';
-import {ImagenFondo} from './ImagenFondo';
+
+import { ImagenFondo } from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import { Home } from './Home';
 
@@ -24,7 +23,7 @@ export default function App() {
     switch(screen){
         case 'tarjetas':
             return <TarjetasScreen/>
-        case 'Componente 1':
+        case 'Componente1':
             return <Componente1/>
         case 'flatlist':
             return <FlatListScreen />;
@@ -45,7 +44,11 @@ export default function App() {
         case 'home':
             return <Home/>;
         case 'splashScreen':
-            return <SplashScreen/>;           
+            return (
+                <SplashScreen 
+                    cambiarPantalla={() => setScreen('home')}
+                />
+            );         
         case 'menu':
             default:
         return (
