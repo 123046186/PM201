@@ -15,6 +15,8 @@ import ComponenteAlert from './ComponenteAlerta';
 
 import { ImagenFondo } from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
+import ComponentesNativosScreen from './ComponentesNativosScreen';
+
 import { Home } from './Home';
 
 /* Zona 2: Main - componentes */
@@ -41,6 +43,8 @@ export default function App() {
             return <ComponenteAlert />; 
         case 'imagenFondo':
             return <ImagenFondo style={styles.container}/>;
+        case 'componentesNativos':
+            return <ComponentesNativosScreen />;
         case 'home':
             return <Home/>;
         case 'splashScreen':
@@ -65,6 +69,7 @@ export default function App() {
                 <Button title="Practica ComponenteAlerta" onPress={()=>setScreen('ComponenteAlerta')}/>
                 <Button title='Imagen Bg' onPress={() => setScreen('imagenFondo')}/>
                 <Button title='Splash' onPress={() => setScreen('splashScreen')}/>
+                <Button title='componentesNativos' onPress={() => setScreen('componentesNativos')}/>
             </View>
         );//return
     }//switch
