@@ -16,6 +16,7 @@ import ComponenteAlert from './ComponenteAlerta';
 import { ImagenFondo } from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import ComponentesNativosScreen from './ComponentesNativosScreen';
+import LibrosScreen from './LibrosScreen';
 
 import { Home } from './Home';
 
@@ -53,6 +54,8 @@ export default function App() {
                     cambiarPantalla={() => setScreen('home')}
                 />
             );         
+        case 'libros':
+            return <LibrosScreen />;
         case 'menu':
             default:
         return (
@@ -70,6 +73,7 @@ export default function App() {
                 <Button title='Imagen Bg' onPress={() => setScreen('imagenFondo')}/>
                 <Button title='Splash' onPress={() => setScreen('splashScreen')}/>
                 <Button title='componentesNativos' onPress={() => setScreen('componentesNativos')}/>
+                <Button title="Practica Registro de Libros" onPress={() => setScreen('libros')}/>
             </View>
         );//return
     }//switch

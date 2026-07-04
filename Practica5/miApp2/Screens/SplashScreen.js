@@ -7,7 +7,7 @@ export function SplashScreen({cambiarPantalla}) {
 
         const tiempo = setTimeout(() => {
             cambiarPantalla();
-        }, 3000);
+        }, 2000);
 
         return () => clearTimeout(tiempo);
 
