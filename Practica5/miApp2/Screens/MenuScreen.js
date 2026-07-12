@@ -17,6 +17,7 @@ import { ImagenFondo } from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import ComponentesNativosScreen from './ComponentesNativosScreen';
 import LibrosScreen from './LibrosScreen';
+import { tarjetaPlatillo } from '../components/tarjetaPlatillo';
 
 import { Home } from './Home';
 
@@ -46,6 +47,8 @@ export default function App() {
             return <ImagenFondo style={styles.container}/>;
         case 'componentesNativos':
             return <ComponentesNativosScreen />;
+        case 'tarjetaPlatillo':
+            return <tarjetaPlatillo />;
         case 'home':
             return <Home/>;
         case 'splashScreen':
@@ -74,6 +77,7 @@ export default function App() {
                 <Button title='Splash' onPress={() => setScreen('splashScreen')}/>
                 <Button title='componentesNativos' onPress={() => setScreen('componentesNativos')}/>
                 <Button title="Practica Registro de Libros" onPress={() => setScreen('libros')}/>
+                <Button title="Tarjeta Platillo 1" onPress={() => setScreen('tarjetaPlatillo')}/>
             </View>
         );//return
     }//switch
