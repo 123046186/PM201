@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {View,SafeAreaView,Text,TextInput,Pressable,StyleSheet,} from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
   const [nombre, setNombre] = useState('');
