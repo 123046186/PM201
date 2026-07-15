@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+import MiModal from "../components/MiModal";
+import BottomSheet from "../components/BottomSheet";
+import Componente_1 from "./Componente_1";
 import TarjetasScreen from './TarjetasScreen';
 import Componente1 from './Componente1';
 import FlatListScreen from './Practica4/FlatListScreen';
@@ -12,12 +15,10 @@ import PressableScreen from './pressableScreen';
 import SwitchScreen from './SwitchScreen';
 import { Components4_0 } from './Componente4_0';
 import ComponenteAlert from './ComponenteAlerta';
-
 import { ImagenFondo } from './ImagenFondo';
 import { SplashScreen } from './SplashScreen';
 import ComponentesNativosScreen from './ComponentesNativosScreen';
 import LibrosScreen from './LibrosScreen';
-import { tarjetaPlatillo } from '../components/tarjetaPlatillo';
 
 import { Home } from './Home';
 
@@ -47,8 +48,6 @@ export default function App() {
             return <ImagenFondo style={styles.container}/>;
         case 'componentesNativos':
             return <ComponentesNativosScreen />;
-        case 'tarjetaPlatillo':
-            return <tarjetaPlatillo />;
         case 'home':
             return <Home/>;
         case 'splashScreen':
@@ -59,6 +58,14 @@ export default function App() {
             );         
         case 'libros':
             return <LibrosScreen />;
+        case 'miModal':
+            return <MiModal />;
+
+        case 'bottomSheet':
+            return <BottomSheet />;
+
+        case 'Componente_1':
+            return <Componente_1 />;
         case 'menu':
             default:
         return (
@@ -77,7 +84,9 @@ export default function App() {
                 <Button title='Splash' onPress={() => setScreen('splashScreen')}/>
                 <Button title='componentesNativos' onPress={() => setScreen('componentesNativos')}/>
                 <Button title="Practica Registro de Libros" onPress={() => setScreen('libros')}/>
-                <Button title="Tarjeta Platillo 1" onPress={() => setScreen('tarjetaPlatillo')}/>
+                <Button title="Practica Mi Modal" onPress={() => setScreen('miModal')}/>
+                <Button title="Practica Bottom Sheet" onPress={() => setScreen('bottomSheet')}/>
+                <Button title="Practica Componente _1" onPress={() => setScreen('Componente_1')}/>
             </View>
         );//return
     }//switch
