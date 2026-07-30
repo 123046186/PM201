@@ -1,30 +1,49 @@
-import React, {useState, useEffect} from 'react';
-import {SafeAreaView,View,Text,FlatList,StyleSheet,
+import React, { useState, useEffect } from 'react';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Pressable,
 } from 'react-native';
+
+import { router } from 'expo-router';
 
 export default function ConsultaUsuariosScreen() {
 
   const [usuarios, setUsuarios] = useState([]);
 
-  const obtenerUsuarios = async()=>{
-    try{
-      const respuesta= await fetch('http://localhost:5000/v1/usuarios/');
-      const datos= await respuesta.json();
-      console.log('Respuesta API', datos);
+  const obtenerUsuarios = async () => {
+    try {
+
+      const respuesta = await fetch('http://10.104.208.248:5000/v1/usuarios/');
+      const datos = await respuesta.json();
+
+      console.log("Respuesta API:", datos);
 
       setUsuarios(datos.usuarios);
 
-    }catch(error){
+    } catch (error) {
+
       console.log("Error:", error);
+
     }
   };
-  useEffect(()=>{obtenerUsuarios();}, [])
-  
+
+  useEffect(() => {
+
+    obtenerUsuarios();
+
+  }, []);
 
   const renderTarjeta = ({ item }) => (
+
     <View style={styles.card}>
 
-      <Text style={styles.nombre}>{item.nombre}</Text>
+      <Text style={styles.nombre}>
+        {item.nombre}
+      </Text>
 
       <View style={styles.linea}></View>
 
@@ -32,7 +51,28 @@ export default function ConsultaUsuariosScreen() {
         Edad: {item.edad} años
       </Text>
 
+      <Pressable
+        style={styles.botonDetalle}
+        onPress={() =>
+          router.push({
+            pathname: "/detalles",
+            params: {
+              id: item.id,
+              nombre: item.nombre,
+              edad: item.edad,
+            },
+          })
+        }
+      >
+
+        <Text style={styles.textoDetalle}>
+          Ver detalles →
+        </Text>
+
+      </Pressable>
+
     </View>
+
   );
 
   return (
@@ -45,15 +85,16 @@ export default function ConsultaUsuariosScreen() {
 
       <FlatList
         data={usuarios}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={renderTarjeta}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
 
     </SafeAreaView>
+
   );
-  
+
 }
 
 const styles = StyleSheet.create({
@@ -103,6 +144,17 @@ const styles = StyleSheet.create({
   info: {
     fontSize: 16,
     color: '#4B5563',
+  },
+
+  botonDetalle: {
+    marginTop: 15,
+    alignSelf: 'flex-end',
+  },
+
+  textoDetalle: {
+    color: '#2563EB',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 
 });

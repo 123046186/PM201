@@ -5,8 +5,8 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#007AFF",
         headerShown: false,
+        tabBarActiveTintColor: "#2563EB",
       }}
     >
       <Tabs.Screen
@@ -14,11 +14,7 @@ export default function TabsLayout() {
         options={{
           title: "Alta",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="person-add"
-              size={size}
-              color={color}
-            />
+            <Ionicons name="person-add" size={size} color={color} />
           ),
         }}
       />
@@ -28,19 +24,8 @@ export default function TabsLayout() {
         options={{
           title: "Consulta",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="eye"
-              size={size}
-              color={color}
-            />
+            <Ionicons name="eye" size={size} color={color} />
           ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="index"
-        options={{
-          href: null,
         }}
       />
     </Tabs>
