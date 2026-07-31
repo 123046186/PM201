@@ -30,7 +30,7 @@ export default function EditarUsuarioScreen() {
     try {
 
       const respuesta = await fetch(
-        `http://10.104.208.248:5000/v1/usuarios/${id}`,
+        `http://10.181.42.248:5000/v1/usuarios/${id}`,
         {
           method: "PUT",
           headers: {

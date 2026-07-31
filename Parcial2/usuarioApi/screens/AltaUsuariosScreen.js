@@ -23,7 +23,7 @@ export default function App() {
 
     try{
       setCargando(true);
-      const respuesta = await fetch('http://10.104.208.248:5000/v1/usuarios/',
+      const respuesta = await fetch('http://10.181.42.248:5000/v1/usuarios/',
 
         {
           method:"POST", 
