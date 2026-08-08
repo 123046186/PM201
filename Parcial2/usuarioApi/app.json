@@ -16,8 +16,9 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.erick.repa2",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/login-usuario-3.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -26,7 +27,20 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
-    ]
+        [
+          "expo-build-properties",
+          {
+            "android": {
+              "usesCleartextTraffic": true
+            }
+          }
+        ]
+      ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "9b9568a3-8093-434b-b0c6-f78fdbe6046a"
+      }
+    }
   }
 }
